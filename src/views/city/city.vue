@@ -1,6 +1,7 @@
 <script setup>
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
+import {getCityAll} from "@/service";
 
 const router = useRouter();
 // 搜索框功能
@@ -10,6 +11,14 @@ const cancelClick = () => {
 };
 // tab切换
 const tabActive = ref(0);
+// 获取数据
+onMounted(async () => {
+  let {
+    data: {cityGroup, cityGroupOverSea},
+  } = await getCityAll();
+  console.log(cityGroup);
+  console.log(cityGroupOverSea);
+});
 </script>
 
 <template>
