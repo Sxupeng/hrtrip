@@ -1,5 +1,7 @@
 <script setup>
 import {useRouter} from "vue-router";
+import useCity from "@/stores/modules/city/city";
+import {storeToRefs} from "pinia";
 
 const router = useRouter();
 // 跳转到city页面
@@ -27,15 +29,31 @@ const positionClick = () => {
       }
   );
 };
+// 当前城市
+const cityStore = useCity();
+const {currentCity} = storeToRefs(cityStore);
 </script>
 
 <template>
   <div class = "home-search-box">
+    <!--位置信息-->
     <div class = "locator">
-      <div class = "city" @click = "cityClick">郑州</div>
+      <div class = "city" @click = "cityClick">{{ currentCity.cityName }}</div>
       <div class = "position" @click = "positionClick">
         <span class = "text">我的位置</span>
         <img src = "@/assets/img/home/icon_location.png" alt = ""/>
+      </div>
+    </div>
+    <!--日期范围-->
+    <div class = "date-range">
+      <div class = "start">
+        <span>入住</span>
+        <span class = "date">3月14日</span>
+      </div>
+      <div class = "stay">共两晚</div>
+      <div class = "end">
+        <span>离店</span>
+        <span class = "date">3月16日</span>
       </div>
     </div>
   </div>
@@ -67,6 +85,34 @@ const positionClick = () => {
         width: 18px;
         height: 18px;
         margin-left: 5px;
+      }
+    }
+  }
+
+  .date-range {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+    color: #999999;
+    font-size: 12px;
+
+    div {
+      flex: 1;
+
+    }
+
+    .start, .end {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        margin-top: 3px;
+      }
+
+      .date {
+        font-size: 15px;
+        color: #000000;
       }
     }
   }

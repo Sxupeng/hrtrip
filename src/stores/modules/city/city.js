@@ -6,6 +6,7 @@ const useCity = defineStore("city", {
     // 搜索框功能
     searchValue: null,
     allCity: {},
+    currentCity: { cityName: "郑州" },
   }),
   actions: {
     async getCityAll() {
