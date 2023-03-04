@@ -16,12 +16,12 @@ const tabActive = ref(0);
 // 目的：获取选中标签后的数据
 // 1.获取正确的key：将tabs中绑定的tabActive 正确的绑定
 // 2.根据key从allCity中获取数据，但是默认获取的数据不是响应式的，所以必须包裹computed
-const currentGroup = computed(() => allCity.value[tabActive.value]);
+// const currentGroup = computed(() => allCity.value[tabActive.value]);
 
 // 路由
 const router = useRouter();
 const cancelClick = () => {
-  router.push("/home");
+  router.back();
 };
 </script>
 
