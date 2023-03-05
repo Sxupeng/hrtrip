@@ -2,6 +2,8 @@
 import {useRouter} from "vue-router";
 import useCity from "@/stores/modules/city/city";
 import {storeToRefs} from "pinia";
+import HomeCalendar from "@/views/home/cpns/home-calendar.vue";
+import HomeHotSuggests from "@/views/home/cpns/home-hot-suggests.vue";
 
 const router = useRouter();
 // 跳转到city页面
@@ -37,7 +39,7 @@ const {currentCity} = storeToRefs(cityStore);
 <template>
   <div class = "home-search-box">
     <!--位置信息-->
-    <div class = "locator">
+    <div class = "locator bottom-gray-line">
       <div class = "city" @click = "cityClick">{{ currentCity.cityName }}</div>
       <div class = "position" @click = "positionClick">
         <span class = "text">我的位置</span>
@@ -45,17 +47,17 @@ const {currentCity} = storeToRefs(cityStore);
       </div>
     </div>
     <!--日期范围-->
-    <div class = "date-range">
-      <div class = "start">
-        <span>入住</span>
-        <span class = "date">3月14日</span>
-      </div>
-      <div class = "stay">共两晚</div>
-      <div class = "end">
-        <span>离店</span>
-        <span class = "date">3月16日</span>
-      </div>
+    <home-calendar></home-calendar>
+    <!--价格 民宿 -->
+    <div class = "item bottom-gray-line">
+      <div class = "price">价格不限</div>
+      <div class = "ofPeople right-line">人数不限</div>
     </div>
+    <div class = "item bottom-gray-line">
+      <div class = "crux">关键字/位置/民宿名字</div>
+    </div>
+    <!--热门建议-->
+    <home-hot-suggests></home-hot-suggests>
   </div>
 </template>
 
@@ -89,31 +91,16 @@ const {currentCity} = storeToRefs(cityStore);
     }
   }
 
-  .date-range {
+  .item {
     display: flex;
-    justify-content: space-around;
+    height: 44px;
+    color: #999999;
     align-items: center;
     padding: 0 20px;
-    color: #999999;
-    font-size: 12px;
 
-    div {
-      flex: 1;
-
-    }
-
-    .start, .end {
-      display: flex;
-      flex-direction: column;
-
-      span {
-        margin-top: 3px;
-      }
-
-      .date {
-        font-size: 15px;
-        color: #000000;
-      }
+    .ofPeople {
+      margin-left: 170px;
+      border-right: 1px solid var(--line-color);
     }
   }
 }

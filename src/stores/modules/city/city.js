@@ -13,7 +13,7 @@ const useCity = defineStore("city", {
       let { data: res } = await getCityAll();
       // console.log(cityGroup);
       // console.log(cityGroupOverSea);
-      console.log(res);
+      // console.log(res);
       this.allCity = res;
     },
   },
