@@ -1,5 +1,6 @@
 :root {
     --primary-color: #ff9854;
+    --line-color: #faf8f6;
     /*  全局修改 任何用到的地方都会被修改  */
     /*--van-tabbar-item-icon-size: 30px;*/
 
@@ -18,4 +19,8 @@ body {
     background: #ffffff;
     /*在页面内进行滚动 */
     overflow-y: auto;
+}
+
+.bottom-gray-line {
+    border-bottom: 1px solid var(--line-color);
 }
