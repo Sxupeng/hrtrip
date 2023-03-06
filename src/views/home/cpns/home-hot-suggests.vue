@@ -41,6 +41,7 @@ onMounted(() => {
     padding: 4px 8px;
     margin: 8px 9px 0 0;
     border-radius: 15px;
+    line-height: 1;
   }
 }
 </style>

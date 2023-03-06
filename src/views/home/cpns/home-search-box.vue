@@ -4,6 +4,7 @@ import useCity from "@/stores/modules/city/city";
 import {storeToRefs} from "pinia";
 import HomeCalendar from "@/views/home/cpns/home-calendar.vue";
 import HomeHotSuggests from "@/views/home/cpns/home-hot-suggests.vue";
+import useHomeList from "@/stores/modules/home/home";
 
 const router = useRouter();
 // 跳转到city页面
@@ -34,6 +35,18 @@ const positionClick = () => {
 // 当前城市
 const cityStore = useCity();
 const {currentCity} = storeToRefs(cityStore);
+// 搜索跳转
+// const homeStore = useHomeList();
+const searchClick = () => {
+  router.push({
+    path: "/search",
+    // query: {
+    //   stateDate: homeStore.stateDate,
+    //   endDate: homeStore.endDate,
+    //   currentCity: cityStore.currentCity.cityName,
+    // },
+  });
+};
 </script>
 
 <template>
@@ -58,6 +71,10 @@ const {currentCity} = storeToRefs(cityStore);
     </div>
     <!--热门建议-->
     <home-hot-suggests></home-hot-suggests>
+    <!--搜索按钮-->
+    <div class = "item search-btn">
+      <div class = "btn" @click = "searchClick">开始搜索</div>
+    </div>
   </div>
 </template>
 
@@ -101,6 +118,21 @@ const {currentCity} = storeToRefs(cityStore);
     .ofPeople {
       margin-left: 170px;
       border-right: 1px solid var(--line-color);
+    }
+  }
+
+  .search-btn {
+    .btn {
+      width: 340px;
+      height: 38px;
+      line-height: 38px;
+      margin: 20px 0 0 0;
+      background: var(--theme-linear-gradient);
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 500;
+      border-radius: 40px;
+      text-align: center;
     }
   }
 }

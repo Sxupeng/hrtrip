@@ -1,14 +1,23 @@
 <script setup>
 // 日期范围的处理
-import {ref} from "vue";
+import {ref, watch} from "vue";
 import {formatMountDay, getDiffDays} from "@/utils/format_date";
+import useHomeList from "@/stores/modules/home/home";
 
+const homeStore = useHomeList();
 const nowDate = new Date();
 const stateDate = ref(formatMountDay(nowDate));
 // 把当前时间的天数+1
 const leaveDate = new Date().setDate(nowDate.getDate() + 1);
 const endDate = ref(formatMountDay(leaveDate));
 const stayCount = ref(getDiffDays(nowDate, leaveDate));
+homeStore.stateDate = stateDate.value;
+homeStore.endDate = endDate.value;
+// watch监听改变
+watch(stateDate, () => {
+  homeStore.stateDate = stateDate.value;
+  homeStore.endDate = endDate.value;
+});
 // 日历
 const show = ref(false);
 const onConfirm = (value) => {
@@ -25,17 +34,17 @@ const onConfirm = (value) => {
 };
 // 更改为入住和离店
 const formatter = (day) => {
-  if (day.type === 'start') {
-    day.bottomInfo = '入住';
-  } else if (day.type === 'end') {
-    day.bottomInfo = '离店';
+  if (day.type === "start") {
+    day.bottomInfo = "入住";
+  } else if (day.type === "end") {
+    day.bottomInfo = "离店";
   }
-  return day
-}
+  return day;
+};
 </script>
 
 <template>
-  <div class = 'home-calendar bottom-gray-line '>
+  <div class = "home-calendar bottom-gray-line">
     <div class = "date-range" @click = "show = true">
       <div class = "start">
         <span>入&nbsp;住</span>
