@@ -4,6 +4,8 @@ import { getHotSuggests } from "@/service";
 const useHomeList = defineStore("home", {
   state: () => ({
     hotSUggests: [],
+    stateDate: null,
+    endDate: null,
   }),
   actions: {
     async getSuggests() {

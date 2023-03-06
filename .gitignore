@@ -25,4 +25,4 @@ coverage
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+*.sw?!/src/views/home/cpns/home-search-box.vue
