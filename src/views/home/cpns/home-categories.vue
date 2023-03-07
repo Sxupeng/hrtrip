@@ -1,13 +1,11 @@
 <script setup>
 import useHomeList from "@/stores/modules/home/home";
 import {storeToRefs} from "pinia";
-import {onMounted} from "vue";
 
 const homeStore = useHomeList();
 const {categories} = storeToRefs(homeStore);
-onMounted(() => {
-  homeStore.getCategories();
-});
+
+homeStore.getCategories();
 </script>
 
 <template>

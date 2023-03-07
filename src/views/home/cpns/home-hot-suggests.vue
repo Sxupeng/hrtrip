@@ -1,13 +1,11 @@
 <script setup>
 import useHomeList from "@/stores/modules/home/home";
 import {storeToRefs} from "pinia";
-import {onMounted} from "vue";
 // pinia
 const homeStore = useHomeList();
 const {hotSUggests} = storeToRefs(homeStore);
-onMounted(() => {
-  homeStore.getSuggests();
-});
+
+homeStore.getSuggests();
 </script>
 
 <template>
