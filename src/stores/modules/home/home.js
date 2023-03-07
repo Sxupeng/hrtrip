@@ -24,8 +24,13 @@ const useHomeList = defineStore("home", {
     async getHouselist() {
       let { data: res } = await getHomeHouselist(this.page);
       // console.log(res);
-      // console.log(res);
-      this.houselist.push(...res);
+      this.page++;
+      console.log(this.page);
+      if (this.page === 1) {
+        this.houselist = res;
+      } else {
+        this.houselist.push(...res);
+      }
     },
   },
 });
