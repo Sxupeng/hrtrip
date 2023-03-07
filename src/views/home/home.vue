@@ -1,6 +1,8 @@
 <script setup>
 import HomeNavBar from "@/views/home/cpns/home-nav-bar.vue";
 import HomeSearchBox from "@/views/home/cpns/home-search-box.vue";
+import HomeCategories from "@/views/home/cpns/home-categories.vue";
+import HomeCountent from "@/views/home/cpns/home-countent.vue";
 </script>
 
 <template>
@@ -12,6 +14,10 @@ import HomeSearchBox from "@/views/home/cpns/home-search-box.vue";
     </div>
     <!--home-search-box-->
     <home-search-box></home-search-box>
+    <!--home-categories-->
+    <home-categories></home-categories>
+    <!--home-countent-->
+    <home-countent></home-countent>
   </div>
 </template>
 

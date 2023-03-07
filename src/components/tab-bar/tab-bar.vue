@@ -29,6 +29,7 @@ import {getAssetURL} from "@/utils/load_assets";
 
 <style lang = "scss" scoped>
 .tab-bar {
+  height: 54px;
   // 修改第三方UI组件库的样式
   // 1.用插槽，插入自己的元素 *那么在自己的作用域就可以修改这个元素
   // 2.全局定义一个变量，覆盖它默认变量的值 *缺点：全局修改
