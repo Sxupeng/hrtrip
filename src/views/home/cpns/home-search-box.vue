@@ -4,7 +4,6 @@ import useCity from "@/stores/modules/city/city";
 import {storeToRefs} from "pinia";
 import HomeCalendar from "@/views/home/cpns/home-calendar.vue";
 import HomeHotSuggests from "@/views/home/cpns/home-hot-suggests.vue";
-import useHomeList from "@/stores/modules/home/home";
 
 const router = useRouter();
 // 跳转到city页面
@@ -126,7 +125,7 @@ const searchClick = () => {
       width: 340px;
       height: 38px;
       line-height: 38px;
-      margin: 20px 0 0 0;
+      margin-top: 20px;
       background: var(--theme-linear-gradient);
       color: #ffffff;
       font-size: 18px;

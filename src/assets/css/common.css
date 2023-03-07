@@ -2,6 +2,7 @@
     --primary-color: #ff9854;
     --line-color: #faf8f6;
     --theme-linear-gradient: linear-gradient(90deg, #fa8c1d, #fcaf3f);
+    --price-linear-gradient: linear-gradient(270deg, #f66, #ff9f9f);
     /*  全局修改 任何用到的地方都会被修改  */
     /*--van-tabbar-item-icon-size: 30px;*/
 
