@@ -1,14 +1,14 @@
 <script setup>
-import useHomeList from "@/stores/modules/home/home";
-import {computed, onMounted, onUnmounted, watch} from "vue";
-import {storeToRefs} from "pinia";
+import useHomeList from "@/stores/modules/home";
+import { watch } from "vue";
+import { storeToRefs } from "pinia";
 import HouseItemV9 from "@/components/house-item-v9/house-item-v9.vue";
 import HouseItemV3 from "@/components/house-item-v3/house-item-v3.vue";
 import useScroll from "@/hooks/useScroll";
 
 const homeStore = useHomeList();
 homeStore.getHouselist();
-const {houselist} = storeToRefs(homeStore);
+const { houselist } = storeToRefs(homeStore);
 // 监听window窗口的滚动
 // 1.当我们离开页面时，移除监听
 // 2.如果别的页面也进行类似的监听，会编写重复的代码
@@ -36,7 +36,7 @@ const {houselist} = storeToRefs(homeStore);
 
 // 定义变量方法
 useScroll();
-const {isReachBottom} = useScroll();
+const { isReachBottom } = useScroll();
 watch(isReachBottom, (newValue) => {
   if (newValue) {
     homeStore.getHouselist().then(() => {
@@ -76,13 +76,6 @@ watch(isReachBottom, (newValue) => {
 </template>
 
 <style lang = "scss" scoped>
-.search {
-  position: fixed;
-  z-index: 99;
-  top: 0;
-  left: 0;
-  right: 0;
-}
 
 .home-countent {
   background: #f5f7f9;

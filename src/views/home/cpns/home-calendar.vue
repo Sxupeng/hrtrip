@@ -1,23 +1,17 @@
 <script setup>
 // 日期范围的处理
-import {ref, watch} from "vue";
-import {formatMountDay, getDiffDays} from "@/utils/format_date";
-import useHomeList from "@/stores/modules/home/home";
+import { ref, watch } from "vue";
+import { formatMountDay, getDiffDays } from "@/utils/format_date";
+import useMainStore from "@/stores/modules/main";
 
-const homeStore = useHomeList();
+const mainStore = useMainStore();
 const nowDate = new Date();
 const stateDate = ref(formatMountDay(nowDate));
 // 把当前时间的天数+1
 const leaveDate = new Date().setDate(nowDate.getDate() + 1);
 const endDate = ref(formatMountDay(leaveDate));
 const stayCount = ref(getDiffDays(nowDate, leaveDate));
-homeStore.stateDate = stateDate.value;
-homeStore.endDate = endDate.value;
-// watch监听改变
-watch(stateDate, () => {
-  homeStore.stateDate = stateDate.value;
-  homeStore.endDate = endDate.value;
-});
+
 // 日历
 const show = ref(false);
 const onConfirm = (value) => {
@@ -28,6 +22,8 @@ const onConfirm = (value) => {
   // console.log(selectStartDate, selectEndDate)
   stateDate.value = formatMountDay(selectStartDate);
   endDate.value = formatMountDay(selectEndDate);
+  mainStore.stateDate = selectStartDate;
+  mainStore.endDate = selectEndDate;
   stayCount.value = getDiffDays(selectStartDate, selectEndDate);
   // 关闭日历
   show.value = false;

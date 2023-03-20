@@ -1,7 +1,7 @@
 <script setup>
-import {useRouter} from "vue-router";
-import useCity from "@/stores/modules/city/city";
-import {storeToRefs} from "pinia";
+import { useRouter } from "vue-router";
+import useCity from "@/stores/modules/city";
+import { storeToRefs } from "pinia";
 import HomeCalendar from "@/views/home/cpns/home-calendar.vue";
 import HomeHotSuggests from "@/views/home/cpns/home-hot-suggests.vue";
 
@@ -33,7 +33,7 @@ const positionClick = () => {
 };
 // 当前城市
 const cityStore = useCity();
-const {currentCity} = storeToRefs(cityStore);
+const { currentCity } = storeToRefs(cityStore);
 // 搜索跳转
 // const homeStore = useHomeList();
 const searchClick = () => {

@@ -1,12 +1,12 @@
 <script setup>
-import {computed, onMounted, ref} from "vue";
-import {useRouter} from "vue-router";
-import useCity from "@/stores/modules/city/city";
-import {storeToRefs} from "pinia";
+import { onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
+import useCity from "@/stores/modules/city";
+import { storeToRefs } from "pinia";
 import CityGroup from "@/views/city/cpns/city-group.vue";
 // pinia
 const cityStore = useCity();
-const {allCity, searchValue} = storeToRefs(cityStore);
+const { allCity, searchValue } = storeToRefs(cityStore);
 // 获取数据
 onMounted(() => {
   cityStore.getCityAll();

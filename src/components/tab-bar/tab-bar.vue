@@ -1,8 +1,8 @@
 <script setup>
 import tabData from "@/assets/data/tab-bar";
-import {ref, watch} from "vue";
-import {getAssetURL} from "@/utils/load_assets";
-import {useRoute} from "vue-router";
+import { ref, watch } from "vue";
+import { getAssetURL } from "@/utils/load_assets";
+import { useRoute } from "vue-router";
 
 const currenIndex = ref(0);
 const route = useRoute();
