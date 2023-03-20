@@ -1,7 +1,7 @@
 <script setup>
-import {computed} from "vue";
-import {useRouter} from "vue-router";
-import useCity from "@/stores/modules/city/city";
+import { computed } from "vue";
+import { useRouter } from "vue-router";
+import useCity from "@/stores/modules/city";
 // pinia
 const cityStore = useCity();
 // 定义props

@@ -1,13 +1,13 @@
 <script setup>
 // import {useRoute} from "vue-router";
-import useHomeList from "@/stores/modules/home/home";
-import useCity from "@/stores/modules/city/city";
-import {storeToRefs} from "pinia";
+import useHomeList from "@/stores/modules/home";
+import useCity from "@/stores/modules/city";
+import { storeToRefs } from "pinia";
 
 const homeStore = useHomeList();
 const cityStore = useCity();
-const {stateDate, endDate} = storeToRefs(homeStore);
-const {currentCity} = storeToRefs(cityStore);
+const { stateDate, endDate } = storeToRefs(homeStore);
+const { currentCity } = storeToRefs(cityStore);
 </script>
 
 <template>

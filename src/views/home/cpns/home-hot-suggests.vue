@@ -1,9 +1,9 @@
 <script setup>
-import useHomeList from "@/stores/modules/home/home";
-import {storeToRefs} from "pinia";
+import useHomeList from "@/stores/modules/home";
+import { storeToRefs } from "pinia";
 // pinia
 const homeStore = useHomeList();
-const {hotSUggests} = storeToRefs(homeStore);
+const { hotSUggests } = storeToRefs(homeStore);
 
 homeStore.getSuggests();
 </script>

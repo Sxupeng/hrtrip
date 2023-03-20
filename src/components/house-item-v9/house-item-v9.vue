@@ -1,5 +1,5 @@
 <script setup>
-import {computed} from "vue";
+import { computed } from "vue";
 
 const props = defineProps({
   itemData: {
@@ -8,8 +8,8 @@ const props = defineProps({
   },
 });
 const itemStore = computed(() => {
-  return Number(props.itemData.commentScore)
-})
+  return Number(props.itemData.commentScore);
+});
 </script>
 
 <template>
