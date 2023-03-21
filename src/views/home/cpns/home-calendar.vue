@@ -1,6 +1,6 @@
 <script setup>
 // 日期范围的处理
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import { formatMountDay, getDiffDays } from "@/utils/format_date";
 import useMainStore from "@/stores/modules/main";
 
@@ -13,7 +13,7 @@ const endDate = ref(formatMountDay(leaveDate));
 const stayCount = ref(getDiffDays(nowDate, leaveDate));
 
 // 日历
-const show = ref(false);
+let show = ref(false);
 const onConfirm = (value) => {
   // 设置日期
   // console.log(value)

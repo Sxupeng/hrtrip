@@ -5,9 +5,13 @@ defineProps({
     default: () => ({}),
   },
 });
+// const itemClick = (id) => {
+//   console.log(id);
+// };
 </script>
 
 <template>
+  <!-- @click = "itemClick(itemData.houseId)" -->
   <div class = "house-item">
     <div class = "item-inner">
       <div class = "cover">

@@ -5,6 +5,7 @@ import { storeToRefs } from "pinia";
 import HouseItemV9 from "@/components/house-item-v9/house-item-v9.vue";
 import HouseItemV3 from "@/components/house-item-v3/house-item-v3.vue";
 import useScroll from "@/hooks/useScroll";
+import { useRouter } from "vue-router";
 
 const homeStore = useHomeList();
 homeStore.getHouselist();
@@ -55,6 +56,12 @@ watch(isReachBottom, (newValue) => {
 // const isShowSearch = computed(() => {
 //   return scrollTop.value >= 100;
 // });
+const router = useRouter();
+const itemClick = (id) => {
+  // 跳转到Detail页面
+  // console.log(id);
+  router.push("/detail/" + id);
+};
 </script>
 
 <template>
@@ -65,10 +72,12 @@ watch(isReachBottom, (newValue) => {
         <house-item-v9
             v-if = "item.discoveryContentType === 9"
             :item-data = "item.data"
+            @click = "itemClick(item.data.houseId)"
         ></house-item-v9>
         <house-item-v3
             v-if = "item.discoveryContentType === 3"
             :item-data = "item.data"
+            @click = "itemClick(item.data.houseId)"
         ></house-item-v3>
       </template>
     </div>
@@ -76,7 +85,6 @@ watch(isReachBottom, (newValue) => {
 </template>
 
 <style lang = "scss" scoped>
-
 .home-countent {
   background: #f5f7f9;
   padding-bottom: 20px;

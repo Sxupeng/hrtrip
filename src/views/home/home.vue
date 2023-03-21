@@ -1,8 +1,8 @@
 <script setup>
-import HomeNavBar from "@/views/home/cpns/home-nav-bar.vue";
-import HomeSearchBox from "@/views/home/cpns/home-search-box.vue";
-import HomeCategories from "@/views/home/cpns/home-categories.vue";
-import HomeCountent from "@/views/home/cpns/home-countent.vue";
+import HomeNavBar from "@/views/home/cpns/home-01-nav-bar.vue";
+import HomeSearchBox from "@/views/home/cpns/home-02-search-box.vue";
+import HomeCategories from "@/views/home/cpns/home-03-categories.vue";
+import HomeCountent from "@/views/home/cpns/home-04-countent.vue";
 import { computed } from "vue";
 import useScroll from "@/hooks/useScroll";
 import SearchBar from "@/components/search-bar/search-bar.vue";

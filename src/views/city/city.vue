@@ -4,12 +4,15 @@ import { useRouter } from "vue-router";
 import useCity from "@/stores/modules/city";
 import { storeToRefs } from "pinia";
 import CityGroup from "@/views/city/cpns/city-group.vue";
+import useMainStore from "@/stores/modules/main";
 // pinia
 const cityStore = useCity();
 const { allCity, searchValue } = storeToRefs(cityStore);
+const mainStore = useMainStore();
 // 获取数据
 onMounted(() => {
   cityStore.getCityAll();
+  mainStore.isShowTab = false;
 });
 // tab切换
 const tabActive = ref(0);

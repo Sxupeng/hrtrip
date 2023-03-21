@@ -23,7 +23,7 @@ const useHomeList = defineStore("home", {
 			// console.log(this.page);
 			let { data: res } = await getHomeHouselist(this.page);
 			// console.log(res);
-			this.page++;
+			// this.page++;
 			if (this.page === 1) {
 				this.houselist = res;
 			} else {

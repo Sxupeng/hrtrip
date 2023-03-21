@@ -7,6 +7,16 @@ const useMainStore = defineStore("main", {
 		stateDate: stateDate,
 		endDate: endDate,
 		isLoading: true,
+		isShowTab: true,
 	}),
+	// 开启数据缓存
+	// persist: {
+	// 	enabled: true,
+	// 	strategies: [
+	// 		{
+	// 			paths: ["isShowTab"],
+	// 		},
+	// 	],
+	// },
 });
 export default useMainStore;

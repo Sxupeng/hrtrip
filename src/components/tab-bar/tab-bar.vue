@@ -3,6 +3,8 @@ import tabData from "@/assets/data/tab-bar";
 import { ref, watch } from "vue";
 import { getAssetURL } from "@/utils/load_assets";
 import { useRoute } from "vue-router";
+import useMainStore from "@/stores/modules/main";
+import { storeToRefs } from "pinia";
 
 const currenIndex = ref(0);
 const route = useRoute();
@@ -13,10 +15,12 @@ watch(route, (newRoute) => {
   if (index === -1) return;
   currenIndex.value = index;
 });
+const mainStore = useMainStore();
+const { isShowTab } = storeToRefs(mainStore);
 </script>
 
 <template>
-  <div class = "tab-bar">
+  <div class = "tab-bar" v-show = "isShowTab">
     <van-tabbar v-model = "currenIndex" active-color = "#ff9854" route>
       <template v-for = "(item, index) in tabData" :key = "index">
         <van-tabbar-item :to = "item.path">
