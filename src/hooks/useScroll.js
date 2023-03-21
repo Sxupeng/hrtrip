@@ -1,58 +1,64 @@
 import { onMounted, onUnmounted, ref } from "vue";
 import { throttle } from "underscore";
-// import useHomeList from "@/stores/modules/home";
-// import { storeToRefs } from "pinia";
-//
-// const homeStore = useHomeList();
-// const { page } = storeToRefs(homeStore);
 
-// console.log(throttle());
-// 传入回调方法
+// console.log(throttle)
+
 // export default function useScroll(reachBottomCB) {
-//   const scrollListenHandler = () => {
-//     const clientHeight = document.documentElement.clientHeight;
-//     const scrollTop = document.documentElement.scrollTop;
-//     const scrollHeight = document.documentElement.scrollHeight;
-//     // console.log(scrollTop, scrollHeight, clientHeight);
+//   const scrollListenerHandler = () => {
+//     const clientHeight = document.documentElement.clientHeight
+//     const scrollTop = document.documentElement.scrollTop
+//     const scrollHeight = document.documentElement.scrollHeight
+//     console.log("-------")
 //     if (clientHeight + scrollTop >= scrollHeight) {
-//       if (reachBottomCB) reachBottomCB();
+//       console.log("滚动到底部了")
+//       if (reachBottomCB) reachBottomCB()
 //     }
-//   };
+//   }
+
+//   onMounted(() => {
+//     window.addEventListener("scroll", scrollListenerHandler)
+//   })
+
+//   onUnmounted(() => {
+//     window.removeEventListener("scroll", scrollListenerHandler)
+//   })
 // }
-//     onMounted(() => {
-//       window.addEventListener("scroll", scrollListenHandler);
-//     });
-//     onUnmounted(() => {
-//       window.removeEventListener("scroll", scrollListenHandler);
-//     });
 
-// 定义变量方法
-
-export default function useScroll() {
+export default function useScroll(elRef) {
+	let el = window;
 	const isReachBottom = ref(false);
+	
 	const clientHeight = ref(0);
 	const scrollTop = ref(0);
 	const scrollHeight = ref(0);
-	const isShow = false;
-	// 防抖 节流
-	const scrollListenHandler = throttle(() => {
-		// console.log("监听到滚动");
-		clientHeight.value = document.documentElement.clientHeight;
-		scrollTop.value = document.documentElement.scrollTop;
-		scrollHeight.value = document.documentElement.scrollHeight;
-		// console.log(scrollTop, scrollHeight, clientHeight);
+	
+	// 防抖/节流
+	const scrollListenerHandler = throttle(() => {
+		if (el === window) {
+			clientHeight.value = document.documentElement.clientHeight;
+			scrollTop.value = document.documentElement.scrollTop;
+			scrollHeight.value = document.documentElement.scrollHeight;
+			// console.log("window");
+		} else {
+			clientHeight.value = el.clientHeight;
+			scrollTop.value = el.scrollTop;
+			scrollHeight.value = el.scrollHeight;
+			// console.log("ref");
+		}
 		if (clientHeight.value + scrollTop.value >= scrollHeight.value) {
-			console.log("到底了");
-			// page.value = page.value + 1;
-			// console.log(page.value);
+			console.log("滚动到底部了");
 			isReachBottom.value = true;
 		}
 	}, 100);
+	
 	onMounted(() => {
-		window.addEventListener("scroll", scrollListenHandler);
+		if (elRef) el = elRef.value;
+		el.addEventListener("scroll", scrollListenerHandler);
 	});
+	
 	onUnmounted(() => {
-		window.removeEventListener("scroll", scrollListenHandler);
+		el.removeEventListener("scroll", scrollListenerHandler);
 	});
-	return { isReachBottom, clientHeight, scrollTop, scrollHeight, isShow };
+	
+	return { isReachBottom, clientHeight, scrollTop, scrollHeight };
 }
