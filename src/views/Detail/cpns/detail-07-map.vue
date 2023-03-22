@@ -1,6 +1,6 @@
 <script setup>
 import DetailSection from "@/components/detail-section/detail-section.vue";
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 
 const props = defineProps({
   position: {
@@ -9,9 +9,15 @@ const props = defineProps({
   },
 });
 const mapRef = ref();
+const longitude = computed(() => props.position.longitude);
+const latitude = computed(() => props.position.latitude);
+watch(longitude, () => {
+  // 硬刷新
+  location.reload();
+});
 onMounted(() => {
   let map = new BMapGL.Map(mapRef.value); // 创建地图实例
-  let point = new BMapGL.Point(props.position.longitude, props.position.latitude); // 创建点坐标
+  let point = new BMapGL.Point(longitude.value, latitude.value); // 创建点坐标
   map.centerAndZoom(point, 15); // 初始化地图，设置中心点坐标和地图级别
 
   let marker = new BMapGL.Marker(point); // 创建标注
@@ -29,6 +35,8 @@ onMounted(() => {
 
 <style lang = "scss" scoped>
 .detail-map {
+  margin-top: 30px;
+
   .baidu {
     height: 250px;
   }

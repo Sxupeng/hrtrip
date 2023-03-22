@@ -113,7 +113,7 @@ defineProps({
     .bottom {
       display: flex;
       justify-content: space-between;
-      margin: 50px 10px 10px;
+      margin: 20px 10px 10px;
 
       .item {
         font-size: 12px;
