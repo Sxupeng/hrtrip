@@ -27,6 +27,7 @@ defineProps({
 
 <style lang = "scss" scoped>
 .detail-notice {
+
   .notice-inner {
     .item {
       display: flex;

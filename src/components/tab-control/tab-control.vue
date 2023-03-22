@@ -13,6 +13,13 @@ const itemClick = (index) => {
   currentIndex.value = index;
   emit("tabItemClick", index);
 };
+const setCurrentIndex = (index) => {
+  currentIndex.value = index;
+};
+defineExpose({
+  setCurrentIndex,
+  currentIndex,
+});
 </script>
 
 <template>

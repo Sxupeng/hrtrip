@@ -2,7 +2,7 @@
 import { useRoute, useRouter } from "vue-router";
 import useDetail from "@/stores/modules/detail";
 import { storeToRefs } from "pinia";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import useMainStore from "@/stores/modules/main";
 import DetailSwipe from "@/views/detail/cpns/detail-01-swipe.vue";
 import DetailInfos from "@/views/detail/cpns/detail-02-infos.vue";
@@ -36,7 +36,7 @@ const onClickLeft = () => {
 const detailRef = ref();
 const { scrollTop } = useScroll(detailRef);
 const showTabControl = computed(() => {
-  return scrollTop.value >= 300;
+  return scrollTop.value >= 250;
 });
 // const landlordRef = ref();
 // const sectionEls = [];
@@ -50,6 +50,7 @@ const names = computed(() => {
   return Object.keys(sectionEls.value);
 });
 const getSectionRef = (value) => {
+  if (!value) return;
   const name = value.$el.getAttribute("name");
   sectionEls.value[name] = value.$el;
 };
@@ -58,11 +59,37 @@ const tabClick = (index) => {
   const key = Object.keys(sectionEls.value)[index];
   const el = sectionEls.value[key];
   let instance = el.offsetTop - 44;
-  if (index === 0) instance = instance - 44;
+  if (index === 0) instance = instance + 34;
   detailRef.value.scrollTo({
     top: instance,
   });
 };
+
+// 页面滚动：滚动时对应的tabControll的index
+const tabControlRef = ref();
+// 1.获取所有区域的offsetTop
+let values = null;
+setTimeout(() => {
+  let els = Object.values(sectionEls.value);
+  values = els.map((item) => item.offsetTop);
+  // console.log(els, values);
+}, 500);
+watch(scrollTop, (newValue) => {
+  // console.log(values);
+  // 2.根据newValue去匹配
+  let index = values.length - 1;
+  for (let i = 0; i < values.length; i++) {
+    if (values[i] > newValue + 54) {
+      index = i - 1;
+      break;
+    }
+  }
+  // console.log(index);
+  // console.log(tabControlRef);
+  if (tabControlRef.value?.currentIndex !== index) {
+    tabControlRef.value?.setCurrentIndex(index);
+  }
+});
 </script>
 
 <template>
@@ -72,6 +99,7 @@ const tabClick = (index) => {
         v-if = "showTabControl"
         :titles = "names"
         @tabItemClick = "tabClick"
+        ref = "tabControlRef"
     />
     <van-nav-bar
         title = "房屋详情"
