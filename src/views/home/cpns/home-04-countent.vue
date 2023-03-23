@@ -1,10 +1,8 @@
 <script setup>
 import useHomeList from "@/stores/modules/home";
-import { watch } from "vue";
 import { storeToRefs } from "pinia";
 import HouseItemV9 from "@/components/house-item-v9/house-item-v9.vue";
 import HouseItemV3 from "@/components/house-item-v3/house-item-v3.vue";
-import useScroll from "@/hooks/useScroll";
 import { useRouter } from "vue-router";
 
 const homeStore = useHomeList();
@@ -34,17 +32,8 @@ const { houselist } = storeToRefs(homeStore);
 // useScroll(() => {
 //   homeStore.getHouselist();
 // });
+// useScroll();
 
-// 定义变量方法
-useScroll();
-const { isReachBottom } = useScroll();
-watch(isReachBottom, (newValue) => {
-  if (newValue) {
-    homeStore.getHouselist().then(() => {
-      isReachBottom.value = false;
-    });
-  }
-});
 // 搜索框的显示与控制
 // const isShowSearch = ref(false);
 // watch(scrollTop, (newTop) => {
@@ -60,12 +49,12 @@ const router = useRouter();
 const itemClick = (id) => {
   // 跳转到Detail页面
   // console.log(id);
-  router.push("/detail/" + id);
+  router.push({ path: "/detail/" + id, });
 };
 </script>
 
 <template>
-  <div class = "home-countent">
+  <div class = "home-countent" ref = "homeRef">
     <h2 class = "title">热门精选</h2>
     <div class = "list">
       <template v-for = "item in houselist" :key = "item.data.houseId">
@@ -87,7 +76,8 @@ const itemClick = (id) => {
 <style lang = "scss" scoped>
 .home-countent {
   background: #f5f7f9;
-  padding-bottom: 20px;
+  //padding-bottom: 10px;
+  //box-sizing: border-box;
 
   .title {
     font-size: 21px;

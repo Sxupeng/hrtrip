@@ -4,6 +4,7 @@ import useCity from "@/stores/modules/city";
 import { storeToRefs } from "pinia";
 import HomeCalendar from "@/views/home/cpns/home-calendar.vue";
 import HomeHotSuggests from "@/views/home/cpns/home-hot-suggests.vue";
+import useMainStore from "@/stores/modules/main";
 
 const router = useRouter();
 // 跳转到city页面
@@ -36,6 +37,7 @@ const cityStore = useCity();
 const { currentCity } = storeToRefs(cityStore);
 // 搜索跳转
 // const homeStore = useHomeList();
+const mainStore = useMainStore();
 const searchClick = () => {
   router.push({
     path: "/search",
@@ -45,6 +47,7 @@ const searchClick = () => {
     //   currentCity: cityStore.currentCity.cityName,
     // },
   });
+  mainStore.isShowTab = false;
 };
 </script>
 
