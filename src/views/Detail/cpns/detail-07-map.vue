@@ -11,9 +11,10 @@ const props = defineProps({
 const mapRef = ref();
 const longitude = computed(() => props.position.longitude);
 const latitude = computed(() => props.position.latitude);
-watch(longitude, () => {
+watch(longitude, (newValue) => {
   // 硬刷新
-  location.reload();
+  // location.reload();
+  longitude.value = newValue;
 });
 onMounted(() => {
   let map = new BMapGL.Map(mapRef.value); // 创建地图实例

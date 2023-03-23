@@ -24,11 +24,7 @@ const useHomeList = defineStore("home", {
 			let { data: res } = await getHomeHouselist(this.page);
 			// console.log(res);
 			this.page++;
-			if (this.page === 1) {
-				this.houselist = res;
-			} else {
-				this.houselist.push(...res);
-			}
+			this.houselist.push(...res);
 		},
 	},
 	// 开启数据缓存

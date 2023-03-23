@@ -1,18 +1,48 @@
 <script setup>
 // import {useRoute} from "vue-router";
-import useHomeList from "@/stores/modules/home";
-import useCity from "@/stores/modules/city";
 import { storeToRefs } from "pinia";
+import useCity from "@/stores/modules/city";
+import SearchBar from "@/components/search-bar/search-bar.vue";
+import SearchTabs from "@/views/search/cpns/search-01-tabs.vue";
+import { onMounted } from "vue";
+import useSearch from "@/stores/modules/search";
+import SearchCategories from "@/views/search/cpns/search-02-categories.vue";
+import useMainStore from "@/stores/modules/main";
+import SearchContent from "@/views/search/cpns/search-03-content.vue";
 
-const homeStore = useHomeList();
+const mainStore = useMainStore();
 const cityStore = useCity();
-const { stateDate, endDate } = storeToRefs(homeStore);
+const searchStore = useSearch();
 const { currentCity } = storeToRefs(cityStore);
+onMounted(() => {
+  mainStore.isShowTab = false;
+  searchStore.getSearchTop();
+  searchStore.getSearchResult();
+});
+const { searchTopList, searchResult, housePicture } = storeToRefs(searchStore);
 </script>
 
 <template>
   <div class = "search">
-    <h2>{{ stateDate }}--{{ endDate }}--{{ currentCity.cityName }}</h2>
+    <!--<h2>{{ stateDateStr }}&#45;&#45;{{ endDateStr }}&#45;&#45;{{ currentCity.cityName }}</h2>-->
+    <!--搜索框-->
+    <div class = "search-bar">
+      <div class = "top">
+        <search-bar
+            :city = "currentCity.cityName"
+            content = "搜索波尔塔拉的景点"
+            :isShow = "false"
+            :is-tab = "true"
+        ></search-bar>
+        <!--下拉菜单-->
+        <search-tabs :searchTopList = "searchTopList"/>
+      </div>
+      <div class = "more">
+        <!--优惠滑块-->
+        <search-categories :searchHotFilters = "searchResult"/>
+        <search-content :content = "housePicture"/>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -22,5 +52,27 @@ const { currentCity } = storeToRefs(cityStore);
   z-index: 9;
   height: 100vh;
   background: #ffffff;
+
+  .top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #ffffff;
+    padding-bottom: 65px;
+    z-index: 999;
+
+  }
+
+  .search-bar {
+    width: 100%;
+    height: 42px;
+    font-size: 12px;
+  }
+
+  .more {
+    background: #f2f2f2;
+    margin-top: 150px;
+    padding: 0 20px;
+  }
 }
 </style>

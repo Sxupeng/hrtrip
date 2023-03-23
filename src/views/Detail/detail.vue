@@ -14,6 +14,7 @@ import DetailMap from "@/views/detail/cpns/detail-07-map.vue";
 import DetailIntro from "@/views/detail/cpns/detail-08-intro.vue";
 import TabControl from "@/components/tab-control/tab-control.vue";
 import useScroll from "@/hooks/useScroll";
+import DetailFooter from "@/views/detail/cpns/detail-09-footer.vue";
 
 const mainStore = useMainStore();
 const route = useRoute();
@@ -28,9 +29,11 @@ onMounted(() => {
 const { id, detailItem } = storeToRefs(detailStore);
 id.value = route.params.id;
 const mainPart = computed(() => detailItem.value.mainPart);
+const currentHouse = computed(() => detailItem.value?.currentHouse);
 // 监听返回按钮点击
 const onClickLeft = () => {
   router.back();
+  mainStore.isShowTab = true;
 };
 // tab-control相关操作
 const detailRef = ref();
@@ -54,27 +57,35 @@ const getSectionRef = (value) => {
   const name = value.$el.getAttribute("name");
   sectionEls.value[name] = value.$el;
 };
+
+let isClick = false;
+let currentDistance = -1;
 const tabClick = (index) => {
   // console.log("tabClick");
   const key = Object.keys(sectionEls.value)[index];
   const el = sectionEls.value[key];
-  let instance = el.offsetTop - 44;
-  if (index === 0) instance = instance + 34;
+  let distance = el.offsetTop - 44;
+  if (index === 0) distance = distance + 34;
+
+  isClick = true;
+  currentDistance = distance;
+
   detailRef.value.scrollTo({
-    top: instance,
+    top: distance,
+    behavior: "smooth",
   });
 };
 
 // 页面滚动：滚动时对应的tabControll的index
 const tabControlRef = ref();
 // 1.获取所有区域的offsetTop
-let values = null;
-setTimeout(() => {
-  let els = Object.values(sectionEls.value);
-  values = els.map((item) => item.offsetTop);
-  // console.log(els, values);
-}, 500);
 watch(scrollTop, (newValue) => {
+  if (newValue > currentDistance) {
+    isClick = false;
+  }
+  if (isClick) return;
+  let els = Object.values(sectionEls.value);
+  let values = els.map((item) => item.offsetTop);
   // console.log(values);
   // 2.根据newValue去匹配
   let index = values.length - 1;
@@ -152,6 +163,8 @@ watch(scrollTop, (newValue) => {
       <img src = "@/assets/img/detail/icon_ensure.png" alt = ""/>
       <div class = "text">弘源旅途, 永无止境!</div>
     </div>
+    <!--底部菜单栏-->
+    <detail-footer :current-house = "currentHouse"/>
   </div>
 </template>
 
