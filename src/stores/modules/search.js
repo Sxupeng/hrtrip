@@ -6,6 +6,7 @@ const useSearch = defineStore("search", {
 		searchTopList: [],
 		searchResult: [],
 		housePicture: [],
+		searchTopList0: [],
 	}),
 	actions: {
 		async getSearchTop() {
@@ -15,7 +16,7 @@ const useSearch = defineStore("search", {
 		},
 		async getSearchResult() {
 			let { data: res } = await getSearchResult();
-			console.log(res.data.items);
+			// console.log(res.data.items);
 			this.searchResult = res.data.hotFilters;
 			this.housePicture = res.data.items;
 		},

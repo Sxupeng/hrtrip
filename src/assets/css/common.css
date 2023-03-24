@@ -34,3 +34,12 @@ body {
     height: 12px;
     margin-right: 5px;
 }
+
+.icon-xl {
+    display: inline-block;
+    background-image: url(/src/assets/img/home/home-sprite.png);
+    width: 10px;
+    height: 5px;
+    background-size: 207px 192px;
+    background: pink;
+}

@@ -9,17 +9,22 @@ import useSearch from "@/stores/modules/search";
 import SearchCategories from "@/views/search/cpns/search-02-categories.vue";
 import useMainStore from "@/stores/modules/main";
 import SearchContent from "@/views/search/cpns/search-03-content.vue";
+import SearchPage from "@/views/search-page/search-page.vue";
 
 const mainStore = useMainStore();
 const cityStore = useCity();
 const searchStore = useSearch();
 const { currentCity } = storeToRefs(cityStore);
+const { isShowSearch } = storeToRefs(mainStore);
 onMounted(() => {
   mainStore.isShowTab = false;
-  searchStore.getSearchTop();
-  searchStore.getSearchResult();
 });
+searchStore.getSearchTop();
+searchStore.getSearchResult();
 const { searchTopList, searchResult, housePicture } = storeToRefs(searchStore);
+const inputClick = () => {
+  mainStore.isShowSearch = true;
+};
 </script>
 
 <template>
@@ -33,15 +38,20 @@ const { searchTopList, searchResult, housePicture } = storeToRefs(searchStore);
             content = "搜索波尔塔拉的景点"
             :isShow = "false"
             :is-tab = "true"
+            @click = "inputClick"
         ></search-bar>
         <!--下拉菜单-->
         <search-tabs :searchTopList = "searchTopList"/>
+        <search-categories :searchHotFilters = "searchResult"/>
       </div>
       <div class = "more">
         <!--优惠滑块-->
-        <search-categories :searchHotFilters = "searchResult"/>
         <search-content :content = "housePicture"/>
       </div>
+    </div>
+    <!--search-page-->
+    <div class = "search-page" v-show = "isShowSearch">
+      <search-page/>
     </div>
   </div>
 </template>
@@ -60,7 +70,6 @@ const { searchTopList, searchResult, housePicture } = storeToRefs(searchStore);
     background: #ffffff;
     padding-bottom: 65px;
     z-index: 999;
-
   }
 
   .search-bar {
