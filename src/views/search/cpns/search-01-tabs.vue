@@ -1,26 +1,46 @@
 <script setup>
-import { ref } from "vue";
+import SearchTabsCpn from "@/components/search-tabs/search-01-tabs-cpn.vue";
+import SearchTabsTwo from "@/components/search-tabs/search-02-tabs-two.vue";
+import { onUpdated } from "vue";
+import { getSearchList } from "@/hooks/getSearchList";
 
-const activeName = ref("");
 defineProps({
   searchTopList: {
     type: Array,
     default: () => [],
   },
 });
+
+let iten = [];
+onUpdated(() => {
+  iten = getSearchList(props.searchTopList.subGroups);
+  // console.log(searchStore.searchTopList0[0]);
+});
 </script>
 
 <template>
   <div class = "search-tabs">
-    <van-tabs v-model:active = "activeName" title-active-color = "#ff9854">
-      <template v-for = "(item) in searchTopList" :key = "item.gType">
-        <van-tab :title = "item.label" :name = "item.label"></van-tab>
-      </template>
-    </van-tabs>
+    <van-dropdown-menu>
+      <!--1-->
+      <search-tabs-cpn :searchTopList = "iten" tab-title = "位置"/>
+      <!--2-->
+      <search-tabs-two :searchTopList = "searchTopList[1]"/>
+      <!--3-->
+      <search-tabs-cpn :searchTopList = "searchTopList[2]" tab-title = "筛选"/>
+    </van-dropdown-menu>
   </div>
 </template>
 
 <style lang = "scss" scoped>
 .search-tabs {
+  position: relative;
+  z-index: 2000;
+  margin-top: 10px;
+
+  .content {
+    position: absolute;
+    top: 50px;
+    left: 0;
+  }
 }
 </style>

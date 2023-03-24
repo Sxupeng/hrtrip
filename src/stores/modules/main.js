@@ -8,6 +8,7 @@ const useMainStore = defineStore("main", {
 		endDate: endDate,
 		isLoading: true,
 		isShowTab: true,
+		isShowSearch: false,
 	}),
 	// 开启数据缓存
 	// persist: {

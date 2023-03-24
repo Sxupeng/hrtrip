@@ -13,7 +13,6 @@ import useScroll from "@/hooks/useScroll";
 import SearchBar from "@/components/search-bar/search-bar.vue";
 import useHomeList from "@/stores/modules/home";
 
-
 const homeStore = useHomeList();
 // 定义变量方法
 const homeRef = ref();
@@ -53,7 +52,9 @@ onActivated(() => {
     <home-countent></home-countent>
     <!--隐藏导航栏-->
     <div class = "search-bar" v-show = "isShowSearch">
-      <search-bar></search-bar>
+      <div class = "search">
+        <search-bar></search-bar>
+      </div>
     </div>
   </div>
 </template>
@@ -70,11 +71,16 @@ onActivated(() => {
     top: 0;
     left: 0;
     right: 0;
-    width: 90%;
-    margin: 10px 5%;
-    height: 45px;
+    width: 100%;
+    padding: 10px 0;
+    height: 65px;
     z-index: 99;
     background: #ffffff;
+
+    .search {
+      width: 90%;
+      margin: 10px 5%;
+    }
   }
 
   .banner {

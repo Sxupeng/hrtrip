@@ -100,7 +100,7 @@ const catchClick = () => {
     display: flex;
     align-items: center;
     //margin-left: 10px;
-    border-right: 1px solid #ffffff;
+    //border-right: 1px solid #ffffff;
     flex-direction: column;
 
     .item {
