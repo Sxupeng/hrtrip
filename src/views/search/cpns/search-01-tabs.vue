@@ -3,18 +3,20 @@ import SearchTabsCpn from "@/components/search-tabs/search-01-tabs-cpn.vue";
 import SearchTabsTwo from "@/components/search-tabs/search-02-tabs-two.vue";
 import { onUpdated } from "vue";
 import { getSearchList } from "@/hooks/getSearchList";
+import useSearch from "@/stores/modules/search";
 
-defineProps({
+const props = defineProps({
   searchTopList: {
     type: Array,
     default: () => [],
   },
 });
-
+const searchStore = useSearch();
 let iten = [];
 onUpdated(() => {
-  iten = getSearchList(props.searchTopList.subGroups);
+  iten = getSearchList(props.searchTopList[0].subGroups);
   // console.log(searchStore.searchTopList0[0]);
+  searchStore.searchTopList0 = iten;
 });
 </script>
 

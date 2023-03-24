@@ -31,7 +31,7 @@ const inputClick = () => {
   <div class = "search">
     <!--<h2>{{ stateDateStr }}&#45;&#45;{{ endDateStr }}&#45;&#45;{{ currentCity.cityName }}</h2>-->
     <!--搜索框-->
-    <div class = "search-bar">
+    <div class = "search-bar" v-show = "!isShowSearch">
       <div class = "top">
         <search-bar
             :city = "currentCity.cityName"
@@ -50,13 +50,17 @@ const inputClick = () => {
       </div>
     </div>
     <!--search-page-->
-    <div class = "search-page" v-show = "isShowSearch">
+    <div class = "search-page" v-if = "isShowSearch">
       <search-page/>
     </div>
   </div>
 </template>
 
 <style lang = "scss" scoped>
+.search-page {
+  height: 100vh;
+}
+
 .search {
   position: relative;
   z-index: 9;

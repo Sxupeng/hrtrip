@@ -1,7 +1,5 @@
 <script setup>
-import { onUpdated, ref } from "vue";
-import { getSearchList } from "@/hooks/getSearchList";
-import useSearch from "@/stores/modules/search";
+import { ref } from "vue";
 
 const props = defineProps({
   searchTopList: {
@@ -21,12 +19,12 @@ const selectClick = () => {
 </script>
 
 <template>
-  <div class = "search-tabs" v-if = "iten">
+  <div class = "search-tabs" v-if = "searchTopList">
     <van-dropdown-item :title = "tabTitle">
       <van-tree-select
           v-model:active-id = "activeIds"
           v-model:main-active-index = "activeIndex"
-          :items = "iten"
+          :items = "searchTopList"
           @click-item = "selectClick"
       >
       </van-tree-select>
