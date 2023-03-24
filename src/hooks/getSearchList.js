@@ -1,7 +1,7 @@
 export function getSearchList(subGroups) {
 	return subGroups.map((item) => {
 		let lab = [];
-		if (item.items !== []) {
+		if (item.items) {
 			let lab1 = item.items.map((labels) => {
 				return {
 					text: labels.label,

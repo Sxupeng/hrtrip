@@ -7,6 +7,7 @@ const useSearch = defineStore("search", {
 		searchResult: [],
 		housePicture: [],
 		searchTopList0: [],
+		isShowHot: true,
 	}),
 	actions: {
 		async getSearchTop() {

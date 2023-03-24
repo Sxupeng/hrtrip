@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from "vue";
+import useSearch from "@/stores/modules/search";
+import { storeToRefs } from "pinia";
 
 defineProps({
   title: {
@@ -7,9 +9,10 @@ defineProps({
     default: () => "默认标题",
   },
 });
-const moreIconIsDown = ref(true);
+const searchStore = useSearch();
+const { isShowHot } = storeToRefs(searchStore)
 const iClick = () => {
-  moreIconIsDown.value = !moreIconIsDown.value;
+  isShowHot.value = !isShowHot.value;
 };
 </script>
 
@@ -19,9 +22,9 @@ const iClick = () => {
       <h2>{{ title }}</h2>
     </div>
     <slot>
-      <div class = "expansion" @click = "iClick">
+      <div class = "expansion" @click = "iClick()">
         <span>展开</span>
-        <i :class = "['icon-more', moreIconIsDown ? 'down' : 'up']"></i>
+        <i :class = "['icon-more', isShowHot ? 'down' : 'up']"></i>
       </div>
     </slot>
   </div>
