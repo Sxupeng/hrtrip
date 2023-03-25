@@ -29,7 +29,7 @@ const iClick = (index) => {
       <div class = "expansion" @click = "iClick(idx)">
         <span>展开</span>
         <i
-            :class = "['icon-more', isShowHot && indexs === idx ? 'down' : 'up']"
+            :class = "['icon-more', isShowHot ? 'down' : 'up']"
         ></i>
       </div>
     </slot>
@@ -68,6 +68,7 @@ const iClick = (index) => {
     width: 10px;
     height: 5.5px;
     background-size: 207px 192px;
+    background-position: -178px -121px;
   }
 
   .down {
