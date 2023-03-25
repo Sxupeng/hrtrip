@@ -30,7 +30,7 @@ const stateDateStr = computed(() => formatMountDay(stateDate.value, "MM.DD"));
 const endDateStr = computed(() => formatMountDay(endDate.value, "MM.DD"));
 // console.log(stateDateStr.value);
 const catchClick = () => {
-  router.back();
+  router.push('/home');
   mainStore.isShowTab = true;
 };
 </script>

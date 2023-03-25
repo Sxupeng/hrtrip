@@ -13,10 +13,12 @@ const props = defineProps({
 });
 const searchStore = useSearch();
 let iten = [];
+let iten3 = [];
 onUpdated(() => {
   iten = getSearchList(props.searchTopList[0].subGroups);
   // console.log(searchStore.searchTopList0[0]);
   searchStore.searchTopList0 = iten;
+  iten3 = getSearchList(props.searchTopList[2].subGroups);
 });
 </script>
 
@@ -28,7 +30,7 @@ onUpdated(() => {
       <!--2-->
       <search-tabs-two :searchTopList = "searchTopList[1]"/>
       <!--3-->
-      <search-tabs-cpn :searchTopList = "searchTopList[2]" tab-title = "筛选"/>
+      <search-tabs-cpn :searchTopList = "iten3" tab-title = "筛选"/>
     </van-dropdown-menu>
   </div>
 </template>
