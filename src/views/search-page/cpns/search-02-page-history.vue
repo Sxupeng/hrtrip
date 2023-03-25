@@ -9,9 +9,9 @@ const searchStore = useSearch();
 <template v-if = "searchStore.searchTopList0">
   <template v-for = "(item, index) in searchStore?.searchTopList0" :key = "item">
     <div class = "search-page-history">
-      <search-page-title :title = "item.text"></search-page-title>
+      <search-page-title :title = "item.text" :idx = "index"></search-page-title>
       <div class = "content" :class = "{ active: index === 0 }">
-        <search-page-content :searchContent = "item.children"/>
+        <search-page-content :searchContent = "item.children" :idx = "index"/>
       </div>
     </div>
   </template>

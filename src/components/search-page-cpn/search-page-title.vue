@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from "vue";
 import useSearch from "@/stores/modules/search";
 import { storeToRefs } from "pinia";
 
@@ -8,11 +7,16 @@ defineProps({
     type: String,
     default: () => "默认标题",
   },
+  idx: {
+    type: Number,
+    default: -1,
+  },
 });
 const searchStore = useSearch();
-const { isShowHot } = storeToRefs(searchStore)
-const iClick = () => {
+const { isShowHot, indexs } = storeToRefs(searchStore);
+const iClick = (index) => {
   isShowHot.value = !isShowHot.value;
+  indexs.value = index;
 };
 </script>
 
@@ -22,9 +26,11 @@ const iClick = () => {
       <h2>{{ title }}</h2>
     </div>
     <slot>
-      <div class = "expansion" @click = "iClick()">
+      <div class = "expansion" @click = "iClick(idx)">
         <span>展开</span>
-        <i :class = "['icon-more', isShowHot ? 'down' : 'up']"></i>
+        <i
+            :class = "['icon-more', isShowHot && indexs === idx ? 'down' : 'up']"
+        ></i>
       </div>
     </slot>
   </div>

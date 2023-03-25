@@ -7,9 +7,13 @@ defineProps({
     type: Array,
     default: () => [],
   },
+  idx: {
+    type: Number,
+    default: -1,
+  },
 });
 const searchStore = useSearch();
-const { isShowHot } = storeToRefs(searchStore);
+const { isShowHot, indexs } = storeToRefs(searchStore);
 </script>
 
 <template>
@@ -20,9 +24,11 @@ const { isShowHot } = storeToRefs(searchStore);
           {{ item.text }}
         </div>
         <template v-if = "index > 8">
-          <div :class = "['item1', isShowHot ? 'over' : 'show']">
-            {{ item.text }}
-          </div>
+          <template v-if = "indexs === idx">
+            <div :class = "['item1', isShowHot ? 'over' : 'show']">
+              {{ item.text }}
+            </div>
+          </template>
         </template>
       </template>
     </div>
