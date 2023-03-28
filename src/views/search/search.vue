@@ -72,8 +72,7 @@ const inputClick = () => {
     position: fixed;
     top: 0;
     left: 0;
-    //background: #ffffff;
-    padding-bottom: 65px;
+    background: #ffffff;
     z-index: 999;
   }
 
@@ -85,7 +84,7 @@ const inputClick = () => {
 
   .more {
     background: #f2f2f2;
-    margin-top: 150px;
+    margin-top: 160px;
     padding: 0 20px;
   }
 }

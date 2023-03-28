@@ -22,7 +22,7 @@ const searchStore = useSearch();
   .active {
     .item,
     .item1 {
-      background: #fdf4ed !important;
+      background: #fdf4ed;
     }
   }
 }

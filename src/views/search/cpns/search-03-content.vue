@@ -10,13 +10,15 @@ defineProps({
 <template>
   <div class = "search-content">
     <template v-for = "item in content">
-      <van-swipe lazy-render :show-indicators = "false">
-        <van-swipe-item v-for = "image in item.pictureList" :key = "image">
-          <div class = "pic">
-            <img :src = "image" alt = ""/>
-          </div>
-        </van-swipe-item>
-      </van-swipe>
+      <div class = "img">
+        <van-swipe lazy-render :show-indicators = "false">
+          <van-swipe-item v-for = "image in item.pictureList" :key = "image">
+            <div class = "pic">
+              <img :src = "image" alt = ""/>
+            </div>
+          </van-swipe-item>
+        </van-swipe>
+      </div>
       <div class = "item">
         <div class = "top">
           <span class = "address">{{ item.address }}</span>
@@ -53,12 +55,12 @@ defineProps({
 
 <style lang = "scss" scoped>
 .search-content {
-  .pic {
-    height: 250px;
+
+  .img {
     width: 100%;
     overflow: hidden;
-    border-radius: 5%;
     margin-top: 10px;
+    border-radius: 3%;
 
     img {
       width: 100%;

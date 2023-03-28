@@ -28,13 +28,22 @@ const iClick = (index) => {
     <slot>
       <div class = "expansion" @click = "iClick(idx)">
         <span>展开</span>
-        <i :class = "['icon-more', isShowHot ? 'down' : 'up']"></i>
+        <div class = "icon" v-if = "indexs === idx">
+          <span :class = "['icon-more', isShowHot ? 'down' : 'up']"></span>
+        </div>
+        <div class = "icon" v-else>
+          <span :class = "['icon-more','down']"></span>
+        </div>
       </div>
     </slot>
   </div>
 </template>
 
 <style lang = "scss" scoped>
+.icon {
+  display: inline-block;
+}
+
 .search-page-title {
   position: relative;
   display: flex;
