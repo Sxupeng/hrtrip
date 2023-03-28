@@ -20,7 +20,8 @@ const searchStore = useSearch();
 <style lang = "scss">
 .search-page-history {
   .active {
-    .item, .item1 {
+    .item,
+    .item1 {
       background: #fdf4ed !important;
     }
   }

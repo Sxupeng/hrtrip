@@ -89,8 +89,9 @@ const catchClick = () => {
   font-size: 12px;
 
   .city {
-    font-size: 14px;
-    width: 30px;
+    font-size: 12px;
+    width: 50px;
+    text-align: center;
     color: #000000;
     margin-left: 10px;
   }
