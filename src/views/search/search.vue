@@ -18,6 +18,7 @@ const { currentCity } = storeToRefs(cityStore);
 const { isShowSearch } = storeToRefs(mainStore);
 onMounted(() => {
   mainStore.isShowTab = false;
+  mainStore.isShowSearch = false;
 });
 searchStore.getSearchTop();
 searchStore.getSearchResult();
@@ -65,13 +66,13 @@ const inputClick = () => {
   position: relative;
   z-index: 9;
   height: 100vh;
-  background: #ffffff;
+  //background: #ffffff;
 
   .top {
     position: fixed;
     top: 0;
     left: 0;
-    background: #ffffff;
+    //background: #ffffff;
     padding-bottom: 65px;
     z-index: 999;
   }

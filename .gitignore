@@ -25,4 +25,4 @@ coverage
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?!/src/views/home/cpns/home-search-box.vue
+*.sw?!/src/views/home/cpns/home-search-box.vue!/src/views/home/cpns/home-01-nav-bar.vue

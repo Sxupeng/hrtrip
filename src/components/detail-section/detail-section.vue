@@ -25,7 +25,7 @@ defineProps({
     <div class = "footer">
       <span class = "more"
       >{{ moreText }}
-          <van-icon name = "arrow" v-if = "moreText"/>
+        <van-icon name = "arrow" v-if = "moreText"/>
       </span>
     </div>
   </div>
@@ -63,8 +63,7 @@ defineProps({
   .footer {
     position: absolute;
     right: 20px;
-    margin-top: 20px;
-
+    margin-top: 15px;
 
     .more {
       font-weight: 700;

@@ -1,45 +1,44 @@
 :root {
-    --primary-color: #ff9854;
-    --line-color: #faf8f6;
-    --theme-linear-gradient: linear-gradient(90deg, #fa8c1d, #fcaf3f);
-    --price-linear-gradient: linear-gradient(270deg, #f66, #ff9f9f);
-    /*  全局修改 任何用到的地方都会被修改  */
-    /*--van-tabbar-item-icon-size: 30px;*/
+	--primary-color: #ff9854;
+	--line-color: #faf8f6;
+	--theme-linear-gradient: linear-gradient(90deg, #fa8c1d, #fcaf3f);
+	--price-linear-gradient: linear-gradient(270deg, #f66, #ff9f9f);
+	/*  全局修改 任何用到的地方都会被修改  */
+	/*--van-tabbar-item-icon-size: 30px;*/
 
-    /*  全局修改serarch样式  */
-    --van-search-left-icon-color: var(--primary-color) !important;
-    --van-primary-color: var(--primary-color) !important;
+	/*  全局修改serarch样式  */
+	--van-search-left-icon-color: var(--primary-color) !important;
+	--van-primary-color: var(--primary-color) !important;
 }
 
 body {
-    font-size: 14px;
+	font-size: 14px;
 }
 
 .top-page {
-    position: relative;
-    z-index: 99;
-    height: 100vh;
-    background-color: #fff;
-    overflow-y: auto;
+	position: relative;
+	z-index: 99;
+	height: 100vh;
+	background-color: #fff;
+	overflow-y: auto;
 }
 
 .bottom-gray-line {
-    border-bottom: 1px solid var(--line-color);
+	border-bottom: 1px solid var(--line-color);
 }
 
 .icon-check {
-    background: url("@/assets/img/detail/icon_check.png");
-    background-size: cover;
-    width: 12px;
-    height: 12px;
-    margin-right: 5px;
+	background: url("@/assets/img/detail/icon_check.png");
+	background-size: cover;
+	width: 12px;
+	height: 12px;
+	margin-right: 5px;
 }
 
 .icon-xl {
-    display: inline-block;
-    background-image: url(/src/assets/img/home/home-sprite.png);
-    width: 10px;
-    height: 5px;
-    background-size: 207px 192px;
-    background: pink;
+	display: inline-block;
+	background-image: url(/src/assets/img/home/home-sprite.png);
+	width: 10px;
+	height: 5px;
+	background-size: 207px 192px;
 }

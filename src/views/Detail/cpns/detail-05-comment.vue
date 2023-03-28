@@ -73,7 +73,7 @@ defineProps({
 
 <style lang = "scss" scoped>
 .detail-comment {
-  margin-bottom: 25px;
+  margin-bottom: 45px;
 
   .comment-inner {
     padding: 10px 0;
@@ -96,6 +96,7 @@ defineProps({
             font-size: 48px;
             position: relative;
             z-index: 9;
+            margin-bottom: 10px;
           }
 
           .line {

@@ -5,6 +5,7 @@ const props = defineProps({
     default: () => [],
   },
 });
+console.log(props.swipeData);
 // 对数据进行转换
 const swipeGrop = {};
 // 思路一 两次循环
@@ -37,7 +38,7 @@ const getNames = (name) => {
 
 const getCategroyIndex = (item) => {
   const valueArray = swipeGrop[item.enumPictureCategory];
-  return valueArray.findIndex(data => data === item);
+  return valueArray.findIndex((data) => data === item);
 };
 </script>
 
@@ -69,7 +70,9 @@ const getCategroyIndex = (item) => {
                   class = "count"
                   v-if = "swipeData[active]?.enumPictureCategory === Number(key)"
               >
-                {{ getCategroyIndex(swipeData[active]) + 1 }}/{{ value.length + 1 }}
+                {{ getCategroyIndex(swipeData[active]) + 1 }}/{{
+                  value.length + 1
+                }}
               </span>
             </span>
           </template>
@@ -81,7 +84,6 @@ const getCategroyIndex = (item) => {
 
 <style lang = "scss" scoped>
 .detail-swipe {
-
   .my-swipe {
     position: relative;
 
