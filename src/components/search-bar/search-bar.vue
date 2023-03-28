@@ -81,8 +81,8 @@ const catchClick = () => {
 .search-bar1 {
   position: relative;
   height: 100%;
-  background: #f2f4f6;
-  border-radius: 10px;
+  background: #dcdee0 !important;
+  border-radius: 13px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -121,7 +121,7 @@ const catchClick = () => {
     input {
       width: 100%;
       height: 100%;
-      background: #f2f4f6;
+      background: #dcdee0 !important;
       border: none;
     }
   }
