@@ -13,6 +13,7 @@
 
 body {
 	font-size: 14px;
+	font-family: PingFangSC-Medium, sans-serif !important;
 }
 
 .top-page {
@@ -41,4 +42,12 @@ body {
 	width: 10px;
 	height: 5px;
 	background-size: 207px 192px;
+}
+
+.icon-right {
+	display: inline-block;
+	width: 20px;
+	height: 15px;
+	background-image: url(/src/assets/img/home/icon-right-menu.png);
+	background-size: 20px 15px;
 }

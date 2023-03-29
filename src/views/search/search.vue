@@ -8,7 +8,7 @@ import { onMounted } from "vue";
 import useSearch from "@/stores/modules/search";
 import SearchCategories from "@/views/search/cpns/search-02-categories.vue";
 import useMainStore from "@/stores/modules/main";
-import SearchContent from "@/views/search/cpns/search-03-content.vue";
+import SearchContent from "@/components/content-list/content-list.vue";
 import SearchPage from "@/views/search-page/search-page.vue";
 
 const mainStore = useMainStore();

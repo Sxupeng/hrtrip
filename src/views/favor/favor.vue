@@ -1,5 +1,10 @@
 <script setup>
-import FavorTitle from "@/views/favor/cpns/favor-title.vue";
+import useFavor from "@/stores/modules/favor";
+import FavorTitle from "@/views/favor/cpns/favor-page.vue";
+
+const favorStore = useFavor();
+favorStore.getList();
+favorStore.getHistory();
 </script>
 
 <template>

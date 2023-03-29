@@ -60,6 +60,7 @@ const itenClick = (index) => {
 </template>
 
 <style lang = "scss" scoped>
+
 .search-categories {
   position: fixed;
   top: 0;
