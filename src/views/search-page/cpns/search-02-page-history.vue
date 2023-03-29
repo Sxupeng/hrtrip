@@ -19,10 +19,15 @@ const searchStore = useSearch();
 
 <style lang = "scss">
 .search-page-history {
+  .item,
+  .item1 {
+    background: #fdf4ed;
+  }
+
   .active {
     .item,
     .item1 {
-      background: #fdf4ed;
+      background: #f5eae3 !important;
     }
   }
 }
