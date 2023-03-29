@@ -3,11 +3,11 @@
 </script>
 
 <template>
-  <div class = 'title'></div>
+  <div class = 'page'></div>
 </template>
 
 <style lang = "scss" scoped>
-.title {
+.page {
 
 }
 </style>

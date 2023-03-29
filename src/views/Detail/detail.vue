@@ -105,19 +105,21 @@ watch(scrollTop, (newValue) => {
 
 <template>
   <div class = "detail top-page" ref = "detailRef">
-    <tab-control
-        class = "tabs"
-        v-if = "showTabControl"
-        :titles = "names"
-        @tabItemClick = "tabClick"
-        ref = "tabControlRef"
-    />
-    <van-nav-bar
-        title = "房屋详情"
-        left-text = "旅途"
-        left-arrow
-        @click-left = "onClickLeft"
-    />
+    <div class = "top">
+      <tab-control
+          class = "tabs"
+          v-if = "showTabControl"
+          :titles = "names"
+          @tabItemClick = "tabClick"
+          ref = "tabControlRef"
+      />
+      <van-nav-bar
+          title = "房屋详情"
+          left-text = "旅途"
+          left-arrow
+          @click-left = "onClickLeft"
+      />
+    </div>
     <div class = "main" v-if = "mainPart" v-memo = "[mainPart]">
       <!--轮播图-->
       <detail-swipe :swipe-data = "mainPart.topModule.housePicture.housePics"/>
@@ -170,6 +172,10 @@ watch(scrollTop, (newValue) => {
 
 <style lang = "scss" scoped>
 .detail {
+  .top {
+    background: #ffffff !important;
+  }
+
   .tabs {
     position: fixed;
     left: 0;
