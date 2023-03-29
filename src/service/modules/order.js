@@ -1,6 +1,6 @@
 import myAjax from "../requst";
 
-export let getOrderListAll = () =>
+export let getOrderList = (list) =>
 		myAjax.get({
-			url: "/order/list?type=all",
+			url: "/order/list?type=" + list,
 		});

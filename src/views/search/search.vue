@@ -1,4 +1,6 @@
 <script setup>
+import BackTop from "@/components/back-top/back-top.vue";
+
 // import {useRoute} from "vue-router";
 import { storeToRefs } from "pinia";
 import useCity from "@/stores/modules/city";
@@ -29,7 +31,7 @@ const inputClick = () => {
 </script>
 
 <template>
-  <div class = "search">
+  <div class = "search container">
     <!--<h2>{{ stateDateStr }}&#45;&#45;{{ endDateStr }}&#45;&#45;{{ currentCity.cityName }}</h2>-->
     <!--搜索框-->
     <div class = "search-bar" v-show = "!isShowSearch">
@@ -54,6 +56,7 @@ const inputClick = () => {
     <div class = "search-page" v-if = "isShowSearch">
       <search-page/>
     </div>
+    <back-top/>
   </div>
 </template>
 
@@ -66,6 +69,7 @@ const inputClick = () => {
   position: relative;
   z-index: 9;
   height: 100vh;
+  overflow: auto;
   //background: #ffffff;
 
   .top {

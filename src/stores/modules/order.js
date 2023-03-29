@@ -1,14 +1,16 @@
-import { getOrderListAll } from "@/service/modules/order";
+import { getOrderList } from "@/service/modules/order";
 import { defineStore } from "pinia";
 
 const useOrder = defineStore("order", {
 	state: () => ({
-		allList: [],
+		list: "all",
+		orderList: [],
 	}),
 	actions: {
-		async getAllList() {
-			let { data: res } = await getOrderListAll();
+		async getList() {
+			let { data: res } = await getOrderList(this.list);
 			console.log(res.data.orders);
+			this.orderList = res.data.orders;
 		},
 	},
 });

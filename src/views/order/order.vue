@@ -1,15 +1,21 @@
 <script setup>
-import useOrder from "@/stores/modules/order";
 import OrderTitle from "@/views/order/cpns/order-page.vue";
 
+import useOrder from "@/stores/modules/order";
+
 const orderStore = useOrder();
-// orderStore.getAllList();
+orderStore.getList();
 </script>
 
 <template>
-  <div class = "order">
+  <div class = "order container">
     <order-title/>
   </div>
 </template>
 
-<style lang = "scss" scoped></style>
+<style lang = "scss" scoped>
+.order {
+  height: 100vh;
+  overflow: auto;
+}
+</style>

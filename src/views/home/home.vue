@@ -4,6 +4,7 @@ export default {
 };
 </script>
 <script setup>
+import BackTop from "@/components/back-top/back-top.vue";
 import HomeNavBar from "@/views/home/cpns/home-01-nav-bar.vue";
 import HomeSearchBox from "@/views/home/cpns/home-02-search-box.vue";
 import HomeCategories from "@/views/home/cpns/home-03-categories.vue";
@@ -38,7 +39,7 @@ onActivated(() => {
 </script>
 
 <template>
-  <div class = "home" ref = "homeRef">
+  <div class = "home container" ref = "homeRef">
     <!--导航栏-->
     <home-nav-bar></home-nav-bar>
     <div class = "banner">
@@ -56,6 +57,8 @@ onActivated(() => {
         <search-bar></search-bar>
       </div>
     </div>
+    <!--回到顶部-->
+    <back-top/>
   </div>
 </template>
 

@@ -21,7 +21,7 @@
   .title {
     color: var(--primary-color);
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 500;
   }
 }
 </style>>

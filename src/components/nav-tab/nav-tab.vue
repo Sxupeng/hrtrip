@@ -1,9 +1,12 @@
 <script setup>
+import useMainStore from "@/stores/modules/main";
 import { useRouter } from "vue-router";
 
+const mainStore = useMainStore()
 const router = useRouter();
 const onClickLeft = () => {
   router.back();
+  mainStore.isShowTab = true
 };
 </script>
 

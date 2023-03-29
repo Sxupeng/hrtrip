@@ -19,8 +19,8 @@ const onConfirm = (value) => {
   // console.log(value)
   const selectStartDate = value[0];
   const selectEndDate = value[1];
-  // console.log(selectStartDate, selectEndDate)
-  stateDate.value = formatMountDay(selectStartDate);
+  console.log(selectStartDate, selectEndDate)
+  // stateDate.value = formatMountDay(selectStartDate);
   endDate.value = formatMountDay(selectEndDate);
   mainStore.stateDate = selectStartDate;
   mainStore.endDate = selectEndDate;
