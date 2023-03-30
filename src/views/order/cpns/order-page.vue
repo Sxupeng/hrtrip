@@ -6,12 +6,8 @@ import { ref } from "vue";
 import NavTab from "@/components/nav-tab/nav-tab.vue";
 
 const orderStore = useOrder();
-const { list, orderList } = storeToRefs(orderStore);
-const tabs = [
-  { title: "全部订单", name: "all" },
-  { title: "近期订单", name: "recent" },
-  { title: "待支付", name: "pend" },
-];
+const { list, orderList, tabs } = storeToRefs(orderStore);
+
 const activeName = ref("all");
 const onClickTab = () => {
   list.value = activeName.value;
