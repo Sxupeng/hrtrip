@@ -5,6 +5,7 @@ export default {
 </script>
 <script setup>
 import BackTop from "@/components/back-top/back-top.vue";
+import useMainStore from "@/stores/modules/main";
 import HomeNavBar from "@/views/home/cpns/home-01-nav-bar.vue";
 import HomeSearchBox from "@/views/home/cpns/home-02-search-box.vue";
 import HomeCategories from "@/views/home/cpns/home-03-categories.vue";
@@ -30,11 +31,13 @@ watch(isReachBottom, (newValue) => {
     });
   }
 });
+const mainStore = useMainStore();
 // 跳转到home时，拿到原来的位置
 onActivated(() => {
   homeRef.value?.scrollTo({
     top: scrollTop.value,
   });
+  mainStore.isShowTab = true;
 });
 </script>
 
